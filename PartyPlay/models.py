@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 
 
 class Room(models.Model):
-    name = models.CharField(max_length=200, primary_key=True)
-    url = models.CharField(max_length=200, default=str(name))
+    name = models.CharField(max_length=200)
+    url = models.CharField(max_length=200, default=str(name), primary_key=True)
     public = models.BooleanField(default=True)
     creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
@@ -18,6 +18,9 @@ class Room(models.Model):
 
         return reverse('room-detail-view', args=[str(self.id)])
 
+    def __str__(self):
+        return str(self.name)
+
 
 class Video(models.Model):
     room = models.ForeignKey(Room, on_delete=models.SET_NULL, null=True)
@@ -27,3 +30,6 @@ class Video(models.Model):
     date_uploaded = models.DateTimeField(auto_now_add=True)
     rank = models.IntegerField(default=0)
     played = models.BooleanField(default = False)
+
+    def __str__(self):
+        return str(self.video_name)

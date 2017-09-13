@@ -1,0 +1,11 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+<h1>PartyPlay Rooms</h1>
+<ul>
+{% for room in room_list %}
+    <li>
+        <a href="{%  url 'room-detail-view' room.pk  %}">{{ room.name }}</a>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
