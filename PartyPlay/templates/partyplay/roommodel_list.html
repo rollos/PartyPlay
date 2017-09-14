@@ -4,7 +4,7 @@
 <ul>
 {% for room in room_list %}
     <li>
-        <a href="{%  url 'room-detail-view' room.pk  %}">{{ room.name }}</a>
+        <a href="{%  url 'room-detail-view' room.pk %}">{{ room.name }}</a>
     </li>
 {% endfor %}
 </ul>

@@ -10,4 +10,11 @@
 
         {% endfor %}
     </ul>
+    {% if form %}
+    <form id=''method="post" action="{% url 'add-video' pk=room_data.pk %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit">
+    </form>
+    {% endif %}
 {% endblock %}

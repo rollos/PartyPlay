@@ -16,7 +16,7 @@ class Room(models.Model):
 
     def get_absolute_url(self):
 
-        return reverse('room-detail-view', args=[str(self.id)])
+        return reverse('room-detail-view', args=[str(self.url)])
 
     def __str__(self):
         return str(self.name)

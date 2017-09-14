@@ -1,13 +1,19 @@
-from django.shortcuts import render
+from django.contrib import auth
+from django.http import HttpResponse
+from django.http import HttpResponseNotAllowed
+from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
 from django.views import generic
+from django.views.generic.edit import FormMixin
 
+from PartyPlay.forms import UploadVideoForm
 from PartyPlay.models import Room, Video
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
 
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_http_methods
 
 class RoomModelListView(generic.ListView):
     model = Room
@@ -20,6 +26,9 @@ class RoomModelDetailView(generic.DetailView):
     context_object_name = 'room_data'
     template_name = 'partyplay/roommodel_detail.html'
 
+    upload_form = UploadVideoForm
+
+
 
     def get_context_data(self, **kwargs):
         # Call the base implementation to get the original context
@@ -29,7 +38,30 @@ class RoomModelDetailView(generic.DetailView):
         context['current_videos'] = self.object.video_set.filter(played=False).order_by('-rank')[:10]
 
 
+
+        context['form'] = self.upload_form
         return context
+
+@login_required
+@require_http_methods(["POST"])
+def add_video(request, pk):
+
+    form = UploadVideoForm(request.POST)
+    room = Room.objects.get(pk=pk)
+
+
+    if form.is_valid():
+        video = Video()
+        video.uploader = auth.get_user(request)
+        video.room = room
+        video.video_name = form.cleaned_data['video_name']
+        video.video_url = form.cleaned_data['video_url']
+        video.save()
+
+    return redirect(room.get_absolute_url())
+
+
+
 
 class UserProfilePage(LoginRequiredMixin, generic.ListView):
     model = Video
