@@ -3,4 +3,11 @@
     <h1>{{ room_data.name }}</h1>
     <h3>Created By: {{ room_data.creator }}</h3>
 
+    <h4>Songs:</h4>
+    <ul>
+        {% for video in current_videos %}
+            <li>{{ video.video_name }} - {{ video.uploader }} Rank: {{ video.rank }}</li>
+
+        {% endfor %}
+    </ul>
 {% endblock %}

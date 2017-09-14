@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <h2>{{ user.username }}</h2>
+
+    <h4>My Rooms:</h4>
+    <ul>
+    {% for room in created_rooms %}
+        <li><a href="{%  url 'room-detail-view' room.pk  %}">{{ room.name }}</a></li>
+    {% endfor %}
+    </ul>
+
+    <h4>My Videos:</h4>
+    <ul>
+    {% for video in uploaded_videos %}
+        <li>{{ video.video_name }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
