@@ -11,14 +11,18 @@
         {% for video in current_videos %}
             <li>{{ video.video_name }} - {{ video.uploader }} Rank: {{ video.voters.all.count }}
 
-            <a href="{% url 'vote' pk=video.pk %}">up</a>
+            {% if video in upvoted %}
+                <a href="{% url 'vote' pk=video.pk %}" class="glyphicon glyphicon-arrow-down"></a>
+            {% else %}
+                <a href="{% url 'vote' pk=video.pk %}" class="glyphicon glyphicon-arrow-up"></a>
+            {% endif %}
 
         {% endfor %}
     </ul>
-    {% if form %}
-    <form id=''method="post" action="{% url 'add-video' pk=room_data.pk %}">
+    {% if upload_form %}
+    <form id='' method="post" action="{% url 'add-video' pk=room_data.pk %}">
         {% csrf_token %}
-        {{ vote_form.as_p }}
+        {{ upload_form.as_p }}
         <input type="submit">
     </form>
     {% endif %}

@@ -46,6 +46,14 @@ class RoomModelDetailView(generic.DetailView):
         context['currently_playing'] = top_songs[0]
 
 
+        if auth.user_logged_in:
+            upvoted = []
+
+            for video in top_songs:
+                if video.voters.filter(pk=self.request.user.pk).exists():
+                    upvoted.append(video)
+            context['upvoted'] = upvoted
+
 
         context['upload_form'] = self.upload_form
         return context
