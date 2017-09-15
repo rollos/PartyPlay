@@ -10,11 +10,13 @@
     <ul>
         {% for video in current_videos %}
             <li>{{ video.video_name }} - {{ video.uploader }} Rank: {{ video.voters.all.count }}
+            {% if user.is_authenticated %}
+                {% if video in upvoted %}
+                    <a href="{% url 'vote' pk=video.pk %}" class="glyphicon glyphicon-arrow-down"></a>
+                {% else %}
+                    <a href="{% url 'vote' pk=video.pk %}" class="glyphicon glyphicon-arrow-up"></a>
+                {% endif %}
 
-            {% if video in upvoted %}
-                <a href="{% url 'vote' pk=video.pk %}" class="glyphicon glyphicon-arrow-down"></a>
-            {% else %}
-                <a href="{% url 'vote' pk=video.pk %}" class="glyphicon glyphicon-arrow-up"></a>
             {% endif %}
 
         {% endfor %}

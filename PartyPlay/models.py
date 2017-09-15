@@ -28,7 +28,6 @@ class Video(models.Model):
     video_name = models.CharField(max_length=200)
     uploader = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='uploader_user')
     date_uploaded = models.DateTimeField(auto_now_add=True)
-    rank = models.IntegerField(default=0)
     played = models.BooleanField(default = False)
     voters = models.ManyToManyField(User, related_name='vote_users')
 
