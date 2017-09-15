@@ -1,4 +1,5 @@
 from django.contrib import auth
+from django.db.models import Count
 from django.http import HttpResponse
 from django.http import HttpResponseNotAllowed
 from django.shortcuts import render, get_object_or_404, redirect
@@ -30,16 +31,23 @@ class RoomModelDetailView(generic.DetailView):
 
 
 
+
     def get_context_data(self, **kwargs):
         # Call the base implementation to get the original context
         context = super(RoomModelDetailView, self).get_context_data(**kwargs)
 
         # Get the songs currently in the room
-        context['current_videos'] = self.object.video_set.filter(played=False).order_by('-rank')[:10]
+
+
+        #Ugly ass shit to get the songs ordered by the amount of voters of the song
+        top_songs = self.object.video_set.filter(played=False).annotate(votes_count=Count('voters')).order_by('-votes_count')[:11]
+
+        context['current_videos'] = top_songs[1:]
+        context['currently_playing'] = top_songs[0]
 
 
 
-        context['form'] = self.upload_form
+        context['upload_form'] = self.upload_form
         return context
 
 @login_required
@@ -59,6 +67,23 @@ def add_video(request, pk):
         video.save()
 
     return redirect(room.get_absolute_url())
+
+
+
+@login_required
+def vote(request, pk):
+    video = Video.objects.get(pk=pk)
+    user = auth.get_user(request)
+    if user not in video.voters.all():
+        video.voters.add(user)
+    else:
+        video.voters.remove(user)
+
+    return redirect(video.room.get_absolute_url())
+
+
+
+
 
 
 

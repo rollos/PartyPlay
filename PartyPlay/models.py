@@ -26,10 +26,14 @@ class Video(models.Model):
     room = models.ForeignKey(Room, on_delete=models.SET_NULL, null=True)
     video_url = models.CharField(max_length=2083)
     video_name = models.CharField(max_length=200)
-    uploader = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    uploader = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='uploader_user')
     date_uploaded = models.DateTimeField(auto_now_add=True)
     rank = models.IntegerField(default=0)
     played = models.BooleanField(default = False)
+    voters = models.ManyToManyField(User, related_name='vote_users')
 
     def __str__(self):
         return str(self.video_name)
+
+    def get_votes(self):
+        return self.voters.all().count()

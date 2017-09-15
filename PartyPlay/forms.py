@@ -7,3 +7,5 @@ class UploadVideoForm(forms.Form):
 
     video_name = forms.CharField(label="Name")
     video_url = forms.CharField(label="URL")
+
+
