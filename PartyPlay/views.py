@@ -2,10 +2,13 @@ from django.contrib import auth
 from django.db.models import Count
 from django.http import HttpResponse
 from django.http import HttpResponseNotAllowed
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
+from django.template import RequestContext
 from django.views import generic
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.edit import FormMixin
 
 from PartyPlay.forms import UploadVideoForm
@@ -39,8 +42,8 @@ class RoomModelDetailView(generic.DetailView):
         # Get the songs currently in the room
 
 
-        #Ugly ass shit to get the songs ordered by the amount of voters of the song
-        top_songs = self.object.video_set.filter(played=False).annotate(votes_count=Count('voters')).order_by('-votes_count')[:11]
+
+        top_songs = get_ordered_videos(self.object)
 
         context['current_videos'] = top_songs[1:]
         context['currently_playing'] = top_songs[0]
@@ -57,6 +60,12 @@ class RoomModelDetailView(generic.DetailView):
 
         context['upload_form'] = self.upload_form
         return context
+
+
+
+#Ugly ass shit to get the songs ordered by the amount of voters of the song
+def get_ordered_videos(room):
+    return room.video_set.filter(played=False).annotate(votes_count=Count('voters')).order_by('-votes_count')
 
 @login_required
 @require_http_methods(["POST"])
@@ -79,19 +88,19 @@ def add_video(request, pk):
 
 
 @login_required
-def vote(request, pk):
-    video = Video.objects.get(pk=pk)
+def upvote(request):
+    context = RequestContext(request)
+    pk = request.GET['vid_pk']
+    video = get_object_or_404(Video, pk=pk)
     user = auth.get_user(request)
     if user not in video.voters.all():
         video.voters.add(user)
     else:
         video.voters.remove(user)
 
-    return redirect(video.room.get_absolute_url())
+    video.save()
 
-
-
-
+    return render(request, 'partyplay/queue_body.html', {'current_videos':get_ordered_videos(video.room) })
 
 
 

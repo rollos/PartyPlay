@@ -1,5 +1,9 @@
 {% extends 'base_generic.html' %}
 {% block content %}
+
+    {% load static %}
+    <script src="{% static 'scripts/main.js' %}"></script>
+
     <h1>{{ room_data.name }}</h1>
     <h3>Created By: {{ room_data.creator }}</h3>
 
@@ -7,25 +11,33 @@
     <h4>Currently Playing</h4>
     <p>{{ currently_playing.video_name }} - {{ currently_playing.uploader }} Rank: {{ currently_playing.voters.all.count }}</p>
     <h4>Queue:</h4>
-    <ul>
-        {% for video in current_videos %}
-            <li>{{ video.video_name }} - {{ video.uploader }} Rank: {{ video.voters.all.count }}
-            {% if user.is_authenticated %}
-                {% if video in upvoted %}
-                    <a href="{% url 'vote' pk=video.pk %}" class="glyphicon glyphicon-arrow-down"></a>
-                {% else %}
-                    <a href="{% url 'vote' pk=video.pk %}" class="glyphicon glyphicon-arrow-up"></a>
-                {% endif %}
+    <div id='video_list'>
 
-            {% endif %}
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Uploader</th>
+                <th>Votes</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody class="table_body">
+                {% include 'partyplay/queue_body.html' %}
+            </tbody>
+        </table>
+        <script src="{% static 'scripts/main.js' %}"></script>
+    </div>
 
-        {% endfor %}
-    </ul>
     {% if upload_form %}
-    <form id='' method="post" action="{% url 'add-video' pk=room_data.pk %}">
+    <form id='post-form' method="post" action="{% url 'add-video' pk=room_data.pk %}">
         {% csrf_token %}
         {{ upload_form.as_p }}
         <input type="submit">
     </form>
     {% endif %}
+
+
+
+
 {% endblock %}

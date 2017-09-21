@@ -1,0 +1,23 @@
+
+
+{% for video in current_videos %}
+
+    <tr>
+{#    <li>{{ video.video_name }} - {{ video.uploader }}#}
+    <td >{{ video.video_name }}</td>
+    <td>{{ video.uploader }}</td>
+    <td>{{ video.voters.count }}</td>
+    <td>
+        {% if user.is_authenticated %}
+        <button id="btn-{{ video.pk }}" class="button-item" >vote</button>
+        {% endif %}
+    </td>
+
+
+
+
+    </p>
+    </tr>
+
+
+{% endfor %}
