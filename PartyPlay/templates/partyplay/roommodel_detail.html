@@ -11,6 +11,7 @@
     <h4>Currently Playing</h4>
     <p>{{ currently_playing.video_name }} - {{ currently_playing.uploader }} Rank: {{ currently_playing.voters.all.count }}</p>
     <h4>Queue:</h4>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/WF34N4gJAKE?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
     <div id='video_list'>
 
         <table>
@@ -26,18 +27,20 @@
                 {% include 'partyplay/queue_body.html' %}
             </tbody>
         </table>
-        <script src="{% static 'scripts/main.js' %}"></script>
-    </div>
 
+    </div>
+    <div class="message"></div>
     {% if upload_form %}
-    <form id='post-form' method="post" action="{% url 'add-video' pk=room_data.pk %}">
+    <form  action="" method='POST' id="post-form">
+
         {% csrf_token %}
         {{ upload_form.as_p }}
-        <input type="submit">
+        <input type="submit" value="submit video" />
     </form>
     {% endif %}
 
-
-
+<script src="{% static 'scripts/main.js' %}"></script>
+<script src="{% static 'scripts/csrf.js' %}"></script>
+{% include 'partyplay/submitjs.html' %}
 
 {% endblock %}

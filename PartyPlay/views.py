@@ -1,3 +1,5 @@
+import json
+
 from django.contrib import auth
 from django.db.models import Count
 from django.http import HttpResponse
@@ -18,6 +20,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
+
+
+def render_current_queue(request, room):
+    return render(request, 'partyplay/queue_body.html', {'current_videos': get_ordered_videos(room)})
 
 class RoomModelListView(generic.ListView):
     model = Room
@@ -71,19 +77,26 @@ def get_ordered_videos(room):
 @require_http_methods(["POST"])
 def add_video(request, pk):
 
-    form = UploadVideoForm(request.POST)
     room = Room.objects.get(pk=pk)
+    name = request.POST.get('name')
+    url = request.POST.get('url')
+
+    video = Video()
+    video.uploader = auth.get_user(request)
+    video.room = room
+    video.video_name = name
+    video.video_url = url
+    video.save()
 
 
-    if form.is_valid():
-        video = Video()
-        video.uploader = auth.get_user(request)
-        video.room = room
-        video.video_name = form.cleaned_data['video_name']
-        video.video_url = form.cleaned_data['video_url']
-        video.save()
+    response_data = {}
+    response_data['result'] = 'Create post successful!'
+    response_data['postpk'] = video.pk
+    response_data['text'] = video.video_name
+    response_data['url'] = video.video_url
+    response_data['author'] = video.uploader.username
 
-    return redirect(room.get_absolute_url())
+    return render_current_queue(request, video.room)
 
 
 
@@ -100,7 +113,7 @@ def upvote(request):
 
     video.save()
 
-    return render(request, 'partyplay/queue_body.html', {'current_videos':get_ordered_videos(video.room) })
+    return render_current_queue(request, video.room)
 
 
 

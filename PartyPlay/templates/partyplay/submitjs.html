@@ -1,0 +1,38 @@
+<script type="text/javascript">
+$('#post-form').on('submit', function(event){
+    event.preventDefault();
+    console.log("form submitted!");
+    add_video();
+});
+
+
+function add_video(){
+    console.log("add_video is working");
+
+
+    $.ajax({
+        url : '{% url 'add-video' pk=room_data.pk %}',
+        type : "POST",
+        data: {'name': $('#id_video_name').val(), 'url': $('#id_video_url').val() },
+
+        success : function(html) {
+            $('#id_video_name').val(''); // remove the value from the input
+            $('#id_video_url').val('')
+            console.log("success"); // another sanity check
+            $('.table_body').html(html)
+        },
+
+        // handle a non-successful response
+        error : function(xhr,errmsg,err) {
+            $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+            console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+        }
+    })
+
+
+}
+
+
+
+</script>
