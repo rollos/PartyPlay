@@ -14,17 +14,28 @@ def get_ordered_videos(room):
 
 def update_currently_playing(room):
     vids = get_ordered_videos(room)
+    if vids:
+        next_vid = vids[0] #Get the highest ranked video
+        next_vid.played = True
+        next_vid.save()
 
-    next_vid = vids[0] #Get the highest ranked video
+        room.next_time = timezone.localtime(timezone.now()) + next_vid.duration
+        room.current_video = next_vid
+        room.save()
+        return next_vid.pk
+    else:
+        room.current_video = None
+        room.next_time = None
+        room.save()
+        return None
 
 
-    next_vid.played = True
-    next_vid.save()
 
-    room.next_time = timezone.localtime(timezone.now()) + next_vid.duration
-    room.current_video = next_vid
-    room.save()
-    pass
+
+
+
+
+
 
 def render_current_queue(request, room):
     return HttpResponse(render_to_string('partyplay/queue_body.html', context={'queue': get_ordered_videos(room)}, request=request))

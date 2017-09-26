@@ -4,7 +4,20 @@
         cache: false
     });
 
-    var current_vid_pk = {{ current_video.pk }}
+    var current_vid_pk;
+
+    {% if current_video %}
+
+        current_vid_pk = {{ current_video.pk }}
+
+    {% else %}
+        current_vid_pk = null;
+        var queryTimer = setInterval(send_end_video, 10000 );
+
+    {% endif %}
+
+
+
 
 
 
@@ -54,10 +67,18 @@
 
             success : function(data) {
                 console.log("success" + data['time_until_next']);
-                $('.video_and_queue').html(data['html']);
 
-                current_vid_pk = data['current_vid_pk']
-                video_timer(data['time_until_next'])
+
+                current_vid_pk = data['current_vid_pk'];
+
+                if(current_vid_pk != null){
+                    $('.video_and_queue').html(data['html']);
+                    video_timer(data['time_until_next']);
+                    window.clearInterval(queryTimer)
+                }else{
+                    $('.video_and_queue').html(data['html']);
+                }
+
 
             },
             // handle a non-successful response
@@ -87,6 +108,9 @@
                 $('#id_video_url').val('')
                 console.log("success"); // another sanity check
                 $('.table_body').html(html)
+                if(current_vid_pk == null){
+                    send_end_video()
+                }
             },
 
             // handle a non-successful response
@@ -96,6 +120,9 @@
                 console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
             }
         })
+
+
+
 
 
     }

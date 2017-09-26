@@ -114,15 +114,27 @@ def video_end(request, pk):
     room = Room.objects.get(pk=pk)
 
     #Finished video pk
-    vid_pk = int(request.POST.get("vid_pk"))
+    str_val = request.POST.get("vid_pk")
+    if (str_val == '' or str_val == None):
+        if room.current_video is None:
+            new_pk = update_currently_playing(room)
+        else:
+            new_pk = room.current_video.pk
 
-    #
-    #find the first user to finish their video
-    #This user's request will update current_video
-    #Any subsequent requests will have different pk's than current_video,
-    # they will only receive the updated data
-    if room.current_video.pk == vid_pk:
-        update_currently_playing(room)
+    else:
+        vid_pk = int(str_val)
+
+        #
+        #find the first user to finish their video
+        #This user's request will update current_video
+        #Any subsequent requests will have different pk's than current_video,
+        # they will only receive the updated data
+        if room.current_video is None:
+            new_pk = None
+        elif room.current_video.pk == vid_pk:
+            new_pk = update_currently_playing(room)
+        else:
+            new_pk = room.current_video.pk
 
     t_u_n = get_time_until_next(room)
 
@@ -136,7 +148,7 @@ def video_end(request, pk):
 
         'html': render_to_string('partyplay/video_and_queue.html', context=context),
         'time_until_next': t_u_n,
-        'current_vid_pk': room.current_video.pk
+        'current_vid_pk': new_pk
     }
 
 

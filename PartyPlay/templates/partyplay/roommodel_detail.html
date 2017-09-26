@@ -25,5 +25,7 @@
 <script src="{% static 'scripts/main.js' %}"></script>
 <script src="{% static 'scripts/csrf.js' %}"></script>
 {% include 'partyplay/submitjs.html' %}
-<script>video_timer({{ time_until_next }})</script>
+    {% if current_video %}
+        <script>video_timer({{ time_until_next }})</script>
+    {% endif %}
 {% endblock %}
