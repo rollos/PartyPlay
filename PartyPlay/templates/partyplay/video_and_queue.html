@@ -1,0 +1,22 @@
+
+<p>{{ current_video.video_name }} - {{ current_video.uploader }} Rank: {{ current_video.voters.all.count }}</p>
+<h4>Queue:</h4>
+<p>next_video_time = {{ time_until_next }}</p>
+{#    <iframe width="560" height="315" src="https://www.youtube.com/embed/WF34N4gJAKE?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>#}
+<div id='video_list'>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Uploader</th>
+            <th>Votes</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody class="table_body">
+            {% include 'partyplay/queue_body.html' %}
+        </tbody>
+    </table>
+
+</div>

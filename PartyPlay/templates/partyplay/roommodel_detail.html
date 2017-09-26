@@ -8,26 +8,9 @@
     <h3>Created By: {{ room_data.creator }}</h3>
 
 
-    <h4>Currently Playing</h4>
-    <p>{{ currently_playing.video_name }} - {{ currently_playing.uploader }} Rank: {{ currently_playing.voters.all.count }}</p>
-    <h4>Queue:</h4>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/WF34N4gJAKE?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-    <div id='video_list'>
-
-        <table>
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Uploader</th>
-                <th>Votes</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody class="table_body">
-                {% include 'partyplay/queue_body.html' %}
-            </tbody>
-        </table>
-
+        <h4>Currently Playing</h4>
+    <div class="video_and_queue">
+        {% include 'partyplay/video_and_queue.html' %}
     </div>
     <div class="message"></div>
     {% if upload_form %}
@@ -42,5 +25,5 @@
 <script src="{% static 'scripts/main.js' %}"></script>
 <script src="{% static 'scripts/csrf.js' %}"></script>
 {% include 'partyplay/submitjs.html' %}
-
+<script>video_timer({{ time_until_next }})</script>
 {% endblock %}
