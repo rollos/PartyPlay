@@ -22,6 +22,20 @@
     <p>No videos in the queue, Upload your own!</p>
 {% endif %}
 
+<script>
+        $('#video_list').on('click', '.button-item', function(){
+        var $this = $(this);
+        var v_id = $this.attr('id').split('-')[1];
+        console.log(v_id);
+
+        $('.table_body').html('').load("/partyplay/vote/?vid_pk=" + v_id
+        );
+    });
+</script>
+
+
+
+
 
 
 {#    <iframe width="560" height="315" src="https://www.youtube.com/embed/WF34N4gJAKE?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>#}

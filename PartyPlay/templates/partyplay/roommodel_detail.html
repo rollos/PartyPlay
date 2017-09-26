@@ -22,9 +22,9 @@
     </form>
     {% endif %}
 
-<script src="{% static 'scripts/main.js' %}"></script>
-<script src="{% static 'scripts/csrf.js' %}"></script>
-{% include 'partyplay/submitjs.html' %}
+    <script src="{% static 'scripts/csrf.js' %}"></script>
+
+    {% include 'partyplay/submitjs.html' %}
     {% if current_video %}
         <script>video_timer({{ time_until_next }})</script>
     {% endif %}

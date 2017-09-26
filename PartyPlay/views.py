@@ -146,7 +146,7 @@ def video_end(request, pk):
 
     response_data = {
 
-        'html': render_to_string('partyplay/video_and_queue.html', context=context),
+        'html': render_to_string('partyplay/video_and_queue.html', context=context, request=request),
         'time_until_next': t_u_n,
         'current_vid_pk': new_pk
     }
