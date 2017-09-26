@@ -67,11 +67,17 @@
 
                 if(current_vid_pk != null){
                     $('.video_and_queue').html(data['html']);
+
+
+                    player.loadVideoByID({
+                       videoID: 'bHQqvYy5KYo'
+                    });
+
                     video_timer(data['time_until_next']);
                     window.clearInterval(queryTimer)
                 }else{
                     $('.video_and_queue').html(data['html']);
-                    window.clearInterval(queryTimer)
+                    window.clearInterval(queryTimer);
                     queryTimer = setInterval(send_end_video, 10000 );
                 }
 

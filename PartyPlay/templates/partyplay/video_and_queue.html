@@ -1,6 +1,9 @@
 {% if current_video %}
     <p>{{ current_video.video_name }} - {{ current_video.uploader }} Rank: {{ current_video.voters.all.count }}</p>
     <p>next_video_time = {{ time_until_next }}</p>
+
+
+
     <div id='video_list'>
     <h4>Queue:</h4>
     <table>

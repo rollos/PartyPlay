@@ -140,9 +140,12 @@ def video_end(request, pk):
 
     context = {
         'current_video': room.current_video,
+
         'time_until_next': get_time_until_next(room),
         'queue': get_ordered_videos(room)
     }
+    if context['current_video'] is not None:
+        context['current_vid_url'] = room.current_video.video_url
 
     response_data = {
 

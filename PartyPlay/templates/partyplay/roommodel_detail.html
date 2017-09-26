@@ -9,6 +9,41 @@
 
 
         <h4>Currently Playing</h4>
+
+{#    <div id="player"></div>#}
+
+    <script>
+
+        //load the iframe Player api code asynchronously.
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+        // creates an iframe and youtube player after the api code downloads
+        var player;
+        function onYouTubeIframeAPIReady(){
+            player = new YT.Player('player', {
+                height: '390',
+                width: '640',
+                videoId: 'M7lc1UVf-VE',
+                playerVars: {'autoplay':1},
+                events: {
+                    'onReady': onPlayerReady
+                }
+
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.playVideo()
+        }
+
+
+
+    </script>
+
     <div class="video_and_queue">
         {% include 'partyplay/video_and_queue.html' %}
     </div>
@@ -20,6 +55,48 @@
         {{ upload_form.as_p }}
         <input type="submit" value="submit video" />
     </form>
+
+
+
+    <div id="buttons">
+    <label> <input id="query" type="text"/><button id="search-button"   onclick="keyWordsearch()">Search</button></label>
+    <div id="container">
+      <h1>Search Results</h1>
+      <ul id="results"></ul>
+    </div>
+    <script>
+     function keyWordsearch(){
+        gapi.client.setApiKey('AIzaSyAZGkCZovLfGCxbDniowVMwHoHfMYcVJWo');
+        gapi.client.load('youtube', 'v3', function() {
+                makeRequest();
+        });
+    }
+    function makeRequest() {
+        var q = $('#query').val();
+        var request = gapi.client.youtube.search.list({
+                q: q,
+                part: 'snippet',
+                maxResults: 10,
+                type: 'video'
+        });
+        request.execute(function(response)  {
+                $('#results').empty();
+                var srchItems = response.result.items;
+                $.each(srchItems, function(index, item) {
+                vidTitle = item.snippet.title;
+                vidThumburl =  item.snippet.thumbnails.default.url;
+                vidThumbimg = '<pre><img id="thumb" src="'+vidThumburl+'" alt="No  Image Available." style="width:204px;height:128px"></pre>';
+
+                $('#results').append('<pre>' + vidTitle + vidThumbimg +  '</pre>');
+        })
+    })
+}
+  </script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady">  </script>
+
+
+
     {% endif %}
 
     <script src="{% static 'scripts/csrf.js' %}"></script>
@@ -28,4 +105,8 @@
     {% if current_video %}
         <script>video_timer({{ time_until_next }})</script>
     {% endif %}
+
+
+
+
 {% endblock %}
