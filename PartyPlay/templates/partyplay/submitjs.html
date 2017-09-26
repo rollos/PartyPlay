@@ -5,6 +5,7 @@
     });
 
     var current_vid_pk;
+    var queryTimer;
 
     {% if current_video %}
 
@@ -12,7 +13,7 @@
 
     {% else %}
         current_vid_pk = null;
-        var queryTimer = setInterval(send_end_video, 10000 );
+        queryTimer = setInterval(send_end_video, 10000 );
 
     {% endif %}
 
@@ -77,6 +78,8 @@
                     window.clearInterval(queryTimer)
                 }else{
                     $('.video_and_queue').html(data['html']);
+                    window.clearInterval(queryTimer)
+                    queryTimer = setInterval(send_end_video, 10000 );
                 }
 
 
