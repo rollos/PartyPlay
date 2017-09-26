@@ -35,8 +35,6 @@ def update_currently_playing(room):
 
 
 
-
-
 def render_current_queue(request, room):
     return HttpResponse(render_to_string('partyplay/queue_body.html', context={'queue': get_ordered_videos(room)}, request=request))
 

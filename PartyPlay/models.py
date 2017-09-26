@@ -39,8 +39,6 @@ class Room(models.Model):
 class Video(models.Model):
     room = models.ForeignKey(Room, on_delete=models.SET_NULL, null=True)
     videoID = models.CharField(max_length=200, default='0')
-    video_url = models.CharField(max_length=2083)
-    video_name = models.CharField(max_length=200)
     duration = models.DurationField(default=datetime.timedelta(seconds=30))
     uploader = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='uploader_user')
     date_uploaded = models.DateTimeField(auto_now_add=True)
@@ -49,7 +47,7 @@ class Video(models.Model):
 
 
     def __str__(self):
-        return str(self.video_name)
+        return str(self.videoID)
 
     def get_votes(self):
         return self.voters.all().count()

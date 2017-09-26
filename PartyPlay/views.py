@@ -5,6 +5,8 @@ from django.core import serializers
 from django.forms import model_to_dict
 from django.template.loader import render_to_string
 
+
+from datetime import date, timedelta
 from .helper_functions import *
 from django.contrib import auth
 from django.db.models import Count
@@ -85,8 +87,8 @@ class RoomModelDetailView(generic.DetailView):
 def add_video(request, pk):
 
     room = Room.objects.get(pk=pk)
-    name = request.POST.get('name')
-    url = request.POST.get('url')
+    vid_id = request.POST.get('video_id')
+    duration = request.POST.get('duration')
 
     pre_videos = get_ordered_videos(room)
     empty = not pre_videos.all().exists()
@@ -95,16 +97,11 @@ def add_video(request, pk):
 
     video = Video()
     video.uploader = auth.get_user(request)
+    video.duration = timedelta(seconds=int(duration))
     video.room = room
-    video.video_name = name
-    video.video_url = url
+    video.videoID = vid_id
     video.save()
 
-
-    #When a video is uploaded, before it gets added, check if any videos exist in the room
-    #If not, start running the video
-    #This means that the room was empty of things, so there shouldn't
-    #Be any celery tasks running
 
     return render_current_queue(request, video.room)
 
