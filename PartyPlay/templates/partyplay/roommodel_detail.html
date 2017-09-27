@@ -86,7 +86,7 @@
                 vidID = item.id.videoId;
                 btn_id = 'btn-' + vidID;
                 add_button = '<button id='+btn_id+' class="button-add" >add</button>';
-                $('#results').append('<pre>' + vidTitle  + vidID + vidThumbimg + add_button +  '</pre>');
+                $('#results').append('<pre>' + vidTitle  + vidThumbimg + add_button +  '</pre>');
         })
     })
     }
@@ -110,21 +110,22 @@
             var url = 'https://www.youtube.com/watch?v=' + video_id;
             gapi.client.setApiKey('AIzaSyAZGkCZovLfGCxbDniowVMwHoHfMYcVJWo');
             gapi.client.load('youtube', 'v3', function() {
-                getDurationAndAdd(video_id);
+                getDurationTitleAndAdd(video_id);
+
         });
 
-
+        jQuery('#results').html('');
 
 
 
         });
         </script>
-        <script>
+    <script>
 
-        function getDurationAndAdd(video_id) {
+        function getDurationTitleAndAdd(video_id) {
             var request = gapi.client.youtube.videos.list({
                 id: video_id,
-                part:'contentDetails',
+                part:'snippet, contentDetails',
                 maxResults: 10,
                 type: 'video'
             });
@@ -132,12 +133,11 @@
             request.execute(function(response){
                 var items = response.result.items;
                 $.each(items, function(index, item) {
-{#                    alert(item.contentDetails.duration)#}
-                    add_video(video_id, item.contentDetails.duration)
 
-                });
+                    add_video(video_id, item.contentDetails.duration, item.snippet.title);
+
+                })
             });
-
         }
 
     </script>

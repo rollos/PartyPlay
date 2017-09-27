@@ -39,6 +39,7 @@ class Room(models.Model):
 class Video(models.Model):
     room = models.ForeignKey(Room, on_delete=models.SET_NULL, null=True)
     videoID = models.CharField(max_length=200, default='0')
+    title = models.CharField(max_length=200, default = 'default title set in Model')
     duration = models.DurationField(default=datetime.timedelta(seconds=30))
     uploader = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='uploader_user')
     date_uploaded = models.DateTimeField(auto_now_add=True)

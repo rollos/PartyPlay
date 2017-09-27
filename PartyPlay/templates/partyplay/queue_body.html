@@ -1,10 +1,13 @@
 
-
 {% for video in queue %}
 
     <tr>
 {#    <li>{{ video.video_name }} - {{ video.uploader }}#}
-    <td >{{ video.videoID }}</td>
+
+
+    <td>
+        {{ video.title }}
+    </td>
     <td>{{ video.uploader }}</td>
     <td>{{ video.voters.count }}</td>
     <td>

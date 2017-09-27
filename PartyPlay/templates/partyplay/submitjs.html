@@ -23,11 +23,7 @@
 
 
 
-    $('#post-form').on('submit', function(event){
-        event.preventDefault();
-        console.log("form submitted!");
-        add_video();
-    });
+
 
 
 
@@ -122,7 +118,7 @@
 }
 
 
-    function add_video(video_id, duration){
+    function add_video(video_id, duration, title){
         console.log("add_video is working");
         console.log(video_id);
 
@@ -130,7 +126,7 @@
         $.ajax({
             url : '{% url 'add-video' pk=room_data.pk %}',
             type : "POST",
-            data: {'video_id': video_id, 'duration': convert_yt_time(duration) },
+            data: {'video_id': video_id, 'duration': convert_yt_time(duration), 'title': title },
 
             success : function(html) {
 

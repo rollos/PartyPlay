@@ -89,14 +89,12 @@ def add_video(request, pk):
     room = Room.objects.get(pk=pk)
     vid_id = request.POST.get('video_id')
     duration = request.POST.get('duration')
-
-    pre_videos = get_ordered_videos(room)
-    empty = not pre_videos.all().exists()
-
-
+    title = request.POST.get('title')
 
     video = Video()
     video.uploader = auth.get_user(request)
+
+    video.title = title
     video.duration = timedelta(seconds=int(duration))
     video.room = room
     video.videoID = vid_id
@@ -141,8 +139,7 @@ def video_end(request, pk):
         'time_until_next': get_time_until_next(room),
         'queue': get_ordered_videos(room)
     }
-    if context['current_video'] is not None:
-        context['current_vid_url'] = room.current_video.video_url
+
 
     response_data = {
 

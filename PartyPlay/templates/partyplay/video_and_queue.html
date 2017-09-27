@@ -1,5 +1,5 @@
 {% if current_video %}
-    <p>{{ current_video.videoID }} - {{ current_video.uploader }} Rank: {{ current_video.voters.all.count }}</p>
+    <p>{{ current_video.title }} - {{ current_video.uploader }} Rank: {{ current_video.voters.all.count }}</p>
     <p>next_video_time = {{ time_until_next }}</p>
 
 
