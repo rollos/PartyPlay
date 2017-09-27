@@ -10,7 +10,7 @@
 
         <h4>Currently Playing</h4>
 
-{#    <div id="player"></div>#}
+
 
     <script>
 
@@ -24,11 +24,16 @@
         // creates an iframe and youtube player after the api code downloads
         var player;
         function onYouTubeIframeAPIReady(){
+
+            var start = {{ start_time }};
+            start = parseInt(start);
+            console.log("Start Time " + start);
             player = new YT.Player('player', {
+                videoId:'{{ current_video.videoID }}',
                 height: '390',
                 width: '640',
-                videoId: 'M7lc1UVf-VE',
-                playerVars: {'autoplay':1},
+                playerVars: {'autoplay':1, 'start':start},
+
                 events: {
                     'onReady': onPlayerReady
                 }
@@ -37,12 +42,15 @@
         }
 
         function onPlayerReady(event) {
+
             event.target.playVideo()
         }
 
 
 
     </script>
+
+    <div id="player"></div>
 
     <div class="video_and_queue">
         {% include 'partyplay/video_and_queue.html' %}
@@ -117,8 +125,8 @@
 
         });
 
-        //jQuery('#results').html('');
-       // $('#query').val('')
+        jQuery('#results').html('');
+        $('#query').val('')
 
 
 

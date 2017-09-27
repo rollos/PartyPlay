@@ -62,8 +62,13 @@ class RoomModelDetailView(generic.DetailView):
         context['current_video'] = self.object.current_video
 
 
+        time_until_next = get_time_until_next(self.object)
+        context['time_until_next'] = time_until_next
 
-        context['time_until_next'] = get_time_until_next(self.object)
+        time_until_seconds = time_until_next/1000
+        duration = self.object.current_video.duration.seconds
+
+        context['start_time'] = duration - time_until_seconds
 
 
 

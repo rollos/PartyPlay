@@ -45,3 +45,4 @@ def get_time_until_next(room):
     difference = next_time - now
 
     return int(difference.seconds) * 1000
+
