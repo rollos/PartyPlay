@@ -64,6 +64,8 @@
                 if(current_vid_pk != null){
                     $('.video_and_queue').html(data['html']);
 
+                    player.loadVideoById(data['current_vid_id'], data['start_time'] );
+
                     video_timer(data['time_until_next']);
                     window.clearInterval(queryTimer)
                 }else{

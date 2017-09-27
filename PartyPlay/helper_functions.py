@@ -46,3 +46,15 @@ def get_time_until_next(room):
 
     return int(difference.seconds) * 1000
 
+def get_start_time(room):
+    time_until_next = get_time_until_next(room)
+    tun = time_until_next
+
+    time_until_seconds = time_until_next / 1000
+    if room.current_video:
+
+        duration = room.current_video.duration.seconds
+
+        return duration - time_until_seconds
+    else:
+        return None

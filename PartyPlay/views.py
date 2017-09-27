@@ -61,14 +61,10 @@ class RoomModelDetailView(generic.DetailView):
         context['queue'] = top_songs
         context['current_video'] = self.object.current_video
 
-
         time_until_next = get_time_until_next(self.object)
         context['time_until_next'] = time_until_next
 
-        time_until_seconds = time_until_next/1000
-        duration = self.object.current_video.duration.seconds
-
-        context['start_time'] = duration - time_until_seconds
+        context['start_time'] = get_start_time(self.object)
 
 
 
@@ -115,12 +111,18 @@ def video_end(request, pk):
 
     #Finished video pk
     str_val = request.POST.get("vid_pk")
+
+
+    #If there is no video on frontend
     if (str_val == '' or str_val == None):
+
+        #If there is not a current video
         if room.current_video is None:
             new_pk = update_currently_playing(room)
         else:
             new_pk = room.current_video.pk
 
+    #Thereis not a video playing
     else:
         vid_pk = int(str_val)
 
@@ -136,6 +138,12 @@ def video_end(request, pk):
         else:
             new_pk = room.current_video.pk
 
+    if room.current_video:
+        current_vid = room.current_video.videoID
+    else:
+        current_vid = None
+
+
     t_u_n = get_time_until_next(room)
 
     context = {
@@ -150,7 +158,9 @@ def video_end(request, pk):
 
         'html': render_to_string('partyplay/video_and_queue.html', context=context, request=request),
         'time_until_next': t_u_n,
-        'current_vid_pk': new_pk
+        'current_vid_pk': new_pk,
+        'current_vid_id': current_vid,
+        'start_time': get_start_time(room)
     }
 
 
