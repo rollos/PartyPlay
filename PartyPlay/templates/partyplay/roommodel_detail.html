@@ -105,7 +105,10 @@
     <script>
         $('#results').on('click', '.button-add', function(){
             var $this = $(this);
-            var video_id = $this.attr('id').split('-')[1];
+            var video_id = $this.attr('id').split(/-(.+)/)[1];
+
+            console.log(video_id);
+
 
             var url = 'https://www.youtube.com/watch?v=' + video_id;
             gapi.client.setApiKey('AIzaSyAZGkCZovLfGCxbDniowVMwHoHfMYcVJWo');
@@ -114,7 +117,9 @@
 
         });
 
-        jQuery('#results').html('');
+        //jQuery('#results').html('');
+       // $('#query').val('')
+
 
 
 
@@ -123,6 +128,7 @@
     <script>
 
         function getDurationTitleAndAdd(video_id) {
+            console.log(video_id);
             var request = gapi.client.youtube.videos.list({
                 id: video_id,
                 part:'snippet, contentDetails',

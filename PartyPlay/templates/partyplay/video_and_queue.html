@@ -31,8 +31,7 @@
 <script>
         $('#video_list').on('click', '.button-item', function(){
         var $this = $(this);
-        var v_id = $this.attr('id').split('-')[1];
-        console.log(v_id);
+        var v_id =  $this.attr('id').substring($this.attr('id').indexOf('-')+1);
 
         $('.table_body').html('').load("/partyplay/vote/?vid_pk=" + v_id
         );
