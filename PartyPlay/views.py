@@ -61,8 +61,7 @@ class RoomModelDetailView(generic.DetailView):
         context['queue'] = top_songs
         context['current_video'] = self.object.current_video
 
-        time_until_next = get_time_until_next(self.object)
-        context['time_until_next'] = time_until_next
+
 
         context['start_time'] = get_start_time(self.object)
 

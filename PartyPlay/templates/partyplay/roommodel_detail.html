@@ -1,8 +1,12 @@
 {% extends 'base_generic.html' %}
 {% block content %}
+    {% csrf_token %}
+    <script>
+        var player;
+        var add_url = "{% url 'add-video' pk=room_data.pk %}";
+        var end_video_url = "{% url 'end-video' pk=room_data.pk %}";
+    </script>
 
-    {% load static %}
-    <script src="{% static 'scripts/main.js' %}"></script>
 
     <h1>{{ room_data.name }}</h1>
     <h3>Created By: {{ room_data.creator }}</h3>
@@ -11,46 +15,16 @@
         <h4>Currently Playing</h4>
 
 
-
-    <script>
-
-        //load the iframe Player api code asynchronously.
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-
-        // creates an iframe and youtube player after the api code downloads
-        var player;
-        function onYouTubeIframeAPIReady(){
-
-            var start = {{ start_time }};
-            start = parseInt(start);
-            console.log("Start Time " + start);
-            player = new YT.Player('player', {
-                videoId:'{{ current_video.videoID }}',
-                height: '390',
-                width: '640',
-                playerVars: {'autoplay':1, 'start':start, 'controls':0},
-
-                events: {
-                    'onReady': onPlayerReady
-                }
-
-            });
-        }
-
-        function onPlayerReady(event) {
-
-            event.target.playVideo()
-        }
-
-
-
-    </script>
-
     <div id="player"></div>
+
+    {% if not current_video %}
+        <script>
+            $('#player').hide();
+        </script>
+
+
+    {% endif %}
+
 
     <div class="video_and_queue">
         {% include 'partyplay/video_and_queue.html' %}
@@ -67,98 +41,22 @@
       <h1>Search Results</h1>
       <ul id="results"></ul>
     </div>
-    <script>
 
-
-     function keyWordsearch(){
-        gapi.client.setApiKey('AIzaSyAZGkCZovLfGCxbDniowVMwHoHfMYcVJWo');
-        gapi.client.load('youtube', 'v3', function() {
-                makeRequest();
-        });
-    }
-    function makeRequest() {
-        var q = $('#query').val();
-        var request = gapi.client.youtube.search.list({
-                q: q,
-                part: 'snippet',
-                maxResults: 10,
-                type: 'video'
-        });
-        request.execute(function(response)  {
-                $('#results').empty();
-                var srchItems = response.result.items;
-                $.each(srchItems, function(index, item) {
-                vidTitle = item.snippet.title;
-                vidThumburl =  item.snippet.thumbnails.default.url;
-                vidThumbimg = '<pre><img id="thumb" src="'+vidThumburl+'" alt="No  Image Available." style="width:204px;height:128px"></pre>';
-                vidID = item.id.videoId;
-                btn_id = 'btn-' + vidID;
-                add_button = '<button id='+btn_id+' class="button-add" >add</button>';
-                $('#results').append('<pre>' + vidTitle  + vidThumbimg + add_button +  '</pre>');
-        })
-    })
-    }
-    </script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
   <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady">  </script>
 
 
+{% load static %}
 
-
-    <script src="{% static 'scripts/csrf.js' %}"></script>
+{#<script type="text/javascript" src="{{ STATIC_URL }}scripts/csrf.js"></script>#}
+<script type="text/javascript" src="{% static 'scripts/main.js' %}"></script>
+<script type="text/javascript" src="{% static 'scripts/csrf.js' %}"></script>
 
     {% include 'partyplay/submitjs.html' %}
 
 
-    <script>
-        $('#results').on('click', '.button-add', function(){
-            var $this = $(this);
-            var video_id = $this.attr('id').split(/-(.+)/)[1];
-
-            console.log(video_id);
 
 
-            var url = 'https://www.youtube.com/watch?v=' + video_id;
-            gapi.client.setApiKey('AIzaSyAZGkCZovLfGCxbDniowVMwHoHfMYcVJWo');
-            gapi.client.load('youtube', 'v3', function() {
-                getDurationTitleAndAdd(video_id);
-
-        });
-
-        jQuery('#results').html('');
-        $('#query').val('')
-
-
-
-
-        });
-        </script>
-    <script>
-
-        function getDurationTitleAndAdd(video_id) {
-            console.log(video_id);
-            var request = gapi.client.youtube.videos.list({
-                id: video_id,
-                part:'snippet, contentDetails',
-                maxResults: 10,
-                type: 'video'
-            });
-
-            request.execute(function(response){
-                var items = response.result.items;
-                $.each(items, function(index, item) {
-
-                    add_video(video_id, item.contentDetails.duration, item.snippet.title);
-
-                })
-            });
-        }
-
-    </script>
-
-    {% if current_video %}
-        <script>video_timer({{ time_until_next }})</script>
-    {% endif %}
 
 
 

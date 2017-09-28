@@ -1,17 +1,41 @@
 <script type="text/javascript">
-
+    // using jQuery
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+    function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
     $.ajaxSetup({
-        cache: false
+        cache: false,
+
+        beforeSend: function (xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
     });
+
 
     var current_vid_pk;
     var queryTimer;
 
-    {% if current_video %}
+    {% if not current_video %}
 
-        current_vid_pk = {{ current_video.pk }}
-
-    {% else %}
         current_vid_pk = null;
         queryTimer = setInterval(send_end_video, 10000 );
 
@@ -21,137 +45,6 @@
 
 
 
-
-
-
-
-
-
-
-
-    function video_timer(time){
-        console.log('video timer: ' + time);
-        setTimeout(send_end_video, time);
-
-        var x = 0;
-        var interval_id = setInterval(function(){
-            console.log(time);
-            time=time-1000;
-            if(time <= 0){
-                window.clearInterval(interval_id);
-                x=0
-            }
-
-        }, 1000)
-    }
-
-    function send_end_video(){
-        console.log("sending_video_end_data");
-        $.ajax({
-            url : '{% url 'end-video' pk=room_data.pk %}',
-            type :"POST",
-            data: {
-                'vid_pk': current_vid_pk
-            },
-            dataType:'json',
-
-            success : function(data) {
-                console.log("success" + data['time_until_next']);
-
-
-                current_vid_pk = data['current_vid_pk'];
-
-                if(current_vid_pk != null){
-                    $('.video_and_queue').html(data['html']);
-
-                    player.loadVideoById(data['current_vid_id'], data['start_time'] );
-
-                    video_timer(data['time_until_next']);
-                    window.clearInterval(queryTimer)
-                }else{
-                    $('.video_and_queue').html(data['html']);
-                    window.clearInterval(queryTimer);
-                    queryTimer = setInterval(send_end_video, 10000 );
-                }
-
-
-            },
-            // handle a non-successful response
-            error : function(xhr,errmsg,err) {
-                $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
-                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
-                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-            }
-
-
-        })
-    }
-    function convert_yt_time(duration) {
-    var a = duration.match(/\d+/g);
-
-    if (duration.indexOf('M') >= 0 && duration.indexOf('H') == -1 && duration.indexOf('S') == -1) {
-        a = [0, a[0], 0];
-    }
-
-    if (duration.indexOf('H') >= 0 && duration.indexOf('M') == -1) {
-        a = [a[0], 0, a[1]];
-    }
-    if (duration.indexOf('H') >= 0 && duration.indexOf('M') == -1 && duration.indexOf('S') == -1) {
-        a = [a[0], 0, 0];
-    }
-
-    duration = 0;
-
-    if (a.length == 3) {
-        duration = duration + parseInt(a[0]) * 3600;
-        duration = duration + parseInt(a[1]) * 60;
-        duration = duration + parseInt(a[2]);
-    }
-
-    if (a.length == 2) {
-        duration = duration + parseInt(a[0]) * 60;
-        duration = duration + parseInt(a[1]);
-    }
-
-    if (a.length == 1) {
-        duration = duration + parseInt(a[0]);
-    }
-    return duration
-}
-
-
-    function add_video(video_id, duration, title){
-        console.log("add_video is working");
-        console.log(video_id);
-
-
-        $.ajax({
-            url : '{% url 'add-video' pk=room_data.pk %}',
-            type : "POST",
-            data: {'video_id': video_id, 'duration': convert_yt_time(duration), 'title': title },
-
-            success : function(html) {
-
-                console.log("success"); // another sanity check
-                $('.table_body').html(html);
-                if(current_vid_pk == null){
-                    send_end_video()
-                }
-            },
-
-            // handle a non-successful response
-            error : function(xhr,errmsg,err) {
-                $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
-                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
-                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-            }
-        })
-
-
-
-
-
-    }
 
 
 
