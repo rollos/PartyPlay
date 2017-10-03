@@ -8,6 +8,7 @@
 
      console.log(video_id);
 
+    $("#results").addClass('hidden');
 
      // var url = 'https://www.youtube.com/watch?v=' + video_id;
      gapi.client.setApiKey('AIzaSyAZGkCZovLfGCxbDniowVMwHoHfMYcVJWo');
@@ -15,7 +16,21 @@
          getDurationTitleAndAdd(video_id);
 
      });
+     $("#query").val("");
  });
+
+$(document).ready(function()
+{
+    $('#results').hover(function(){
+        mouse_is_inside=true;
+    }, function(){
+        mouse_is_inside=false;
+    });
+
+    $("body").mouseup(function(){
+        if(! mouse_is_inside) $('#results').addClass('hidden');
+    });
+});
 
 function add_video(video_id, duration, title){
         console.log("add_video is working");
@@ -72,9 +87,11 @@ function add_video(video_id, duration, title){
 
  function keyWordsearch(){
     gapi.client.setApiKey('AIzaSyAZGkCZovLfGCxbDniowVMwHoHfMYcVJWo');
+
     gapi.client.load('youtube', 'v3', function() {
             makeRequest();
     });
+    $("#results").removeClass('hidden');
 }
 
 function makeRequest() {
@@ -89,22 +106,23 @@ function makeRequest() {
                 $('#results').empty();
                 var srchItems = response.result.items;
                 $.each(srchItems, function(index, item) {
-                vidTitle = item.snippet.title;
-                vidThumburl =  item.snippet.thumbnails.default.url;
-                vidThumbimg = '<pre><img id="thumb" src="'+vidThumburl+'" alt="No  Image Available." style="width:204px;height:128px"></pre>';
-                vidID = item.id.videoId;
-                btn_id = 'btn-' + vidID;
-                add_button = '<button id='+btn_id+' class="button-add" >add</button>';
-                $('#results').append('<pre>' + vidTitle  + vidThumbimg + add_button +  '</pre>');
+                    vidTitle = item.snippet.title;
+                    vidThumburl =  item.snippet.thumbnails.default.url;
+                    vidThumbimg = '<img id="thumb" src="'+vidThumburl+'" alt="No  Image Available." style="width:102px;height:64px">';
+                    vidID = item.id.videoId;
+                    btn_id = "'btn-" + vidID +"'";
+                    add_button = "<button id=" + btn_id +  "class='button-add'><span class='glyphicon glyphicon-plus-sign'></span> Add</button>";
+                    console.log(add_button);
+                    $('#results').append('<button id=' + btn_id + 'type="button" class="list-group-item list-group-item-action button-add">' + vidThumbimg + ' ' + vidTitle + ' <span class="glyphicon glyphicon-plus-sign"></span></button>');
         })
     })
 }
+
 
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
 
 // creates an iframe and youtube player after the api code downloads
 
@@ -136,27 +154,21 @@ function onPlayerStateChange(event){
 }
 
 
+var interval_id;
+function video_timer(time){
+    console.log('video timer: ' + time);
+    setTimeout(send_end_video, time);
 
+    var x = 0;
+    interval_id = setInterval(function(){
+        time=time-1000;
+        if(time <= 0){
+            window.clearInterval(interval_id);
+            x=0
+        }
 
-
-
-
-
-    var interval_id;
-    function video_timer(time){
-        console.log('video timer: ' + time);
-        setTimeout(send_end_video, time);
-
-        var x = 0;
-        interval_id = setInterval(function(){
-            time=time-1000;
-            if(time <= 0){
-                window.clearInterval(interval_id);
-                x=0
-            }
-
-        }, 1000)
-    }
+    }, 1000)
+}
 
 function send_end_video(){
     console.log("sending_video_end_data");
@@ -238,4 +250,14 @@ function convert_yt_time(duration) {
     }
     return duration
 }
+$("#searchform").submit(function(){
+    keyWordsearch();
+    return false
+});
+
+
+$(document).on('submit', "#searchform",function() {
+   /* handler code*/
+   keyWordsearch()
+});
 

@@ -1,6 +1,10 @@
 {% extends 'base_generic.html' %}
+{% load static %}
+
 {% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
     {% csrf_token %}
+
     <script>
         var player;
         var add_url = "{% url 'add-video' pk=room_data.pk %}";
@@ -8,39 +12,93 @@
     </script>
 
 
-    <h1>{{ room_data.name }}</h1>
-    <h3>Created By: {{ room_data.creator }}</h3>
+    <div class="col-md-8" style="position:relative">
+        <div class="container-fluid">
 
 
-        <h4>Currently Playing</h4>
+            <div class="title"  >
+                <h1 style="display:inline; vertical-align: bottom;">{{ room_data.name }}</h1>
+                 <p style="display:inline; vertical-align: bottom;">Created By: {{ room_data.creator }}</p>
+            </div>
+            <br>
+
+            <div class="search-and-results">
+
+                     <div id="buttons">
+                         <form class ="form-horizontal" id="searchform" role="form">
+                             <div class="input-group">
+                                 <input id="query" class="form-control" type="search" placeholder="Search YouTube for a video to add..." size="30"/>
+                                 <script>
+
+                                     </script>
+                                 <span class="input-group-btn">
+                                    <button id="search-button"  type ='button' class="btn btn-search btn-default" onclick="keyWordsearch()">
+                                        <span class="glyphicon glyphicon-search"></span>
+
+                                     </button>
+
+                                 </span>
+                             </div>
+                         </form>
+{#                        <label>#}
+{#                            <input id="query" type="text" placeholder="Search YouTube for a video to add..." size="30"/>#}
+{#                            <button id="search-button"  class="btn btn-search btn-default" onclick="keyWordsearch()" style="padding:0; line-height:1">#}
+{#                                <span class="glyphicon glyphicon-search"></span>#}
+{##}
+{#                            </button>#}
+{##}
+{#                        </label>#}
+                    </div>
+    {#                <div id="container" >style="height: 200px; overflow: auto">#}
+        {#                <h1>Search Results</h1>#}
+{#                    <div id="results_div" class="border-top-5" style="display: inline-block;">#}
+
+                        <div id="results" class="list-group rounded-bottom hidden" style="display: inline-block; position: absolute; z-index:1000; max-height:400px; overflow: auto; border-style: solid; border-width:1px; border-bottom-left-radius:25px; border-bottom-right-radius:25px"></div>
 
 
-    <div id="player"></div>
-
-    {% if not current_video %}
-        <script>
-            $('#player').hide();
-        </script>
+{#                    </div>#}
 
 
-    {% endif %}
+
+{#                </div>#}
+
+            </div>
+
+            <div class="col-md-12" style="position:fixed; margin-top:5px; margin-left:0; padding-left:0" >
+
+                    <div id="player" ></div>
+
+            </div>
 
 
-    <div class="video_and_queue">
-        {% include 'partyplay/video_and_queue.html' %}
+
+
+
+
+
+
+
+        <br>
+
+
+        {% if not current_video %}
+            <script>$('#player').hide();</script>
+        {% endif %}
+
+
+            </div>
     </div>
-    <div class="message"></div>
 
-
-
-
-    <div id="buttons">
-    <label> <input id="query" type="text"/><button id="search-button"   onclick="keyWordsearch()">Search</button></label>
+    <div class="col-md-4">
+        <div class="video_and_queue">
+            {% include 'partyplay/video_and_queue.html' %}
+        </div>
+        <div class="message"></div>
     </div>
-    <div id="container">
-      <h1>Search Results</h1>
-      <ul id="results"></ul>
-    </div>
+
+
+
+
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
   <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady">  </script>

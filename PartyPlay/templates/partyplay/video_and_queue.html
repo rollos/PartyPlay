@@ -1,29 +1,27 @@
-{% if current_video %}
-    <p>{{ current_video.title }} - {{ current_video.uploader }} Rank: {{ current_video.voters.all.count }}</p>
+
+{#    <p>{{ current_video.title }} - {{ current_video.uploader }} Rank: {{ current_video.voters.all.count }}</p>#}
 
 
 
 
     <div id='video_list'>
-    <h4>Queue:</h4>
-    <table>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Uploader</th>
-            <th>Votes</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody class="table_body">
-            {% include 'partyplay/queue_body.html' %}
-        </tbody>
-    </table>
+        <h4>Queue:</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Uploader</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="table_body">
+                {% include 'partyplay/queue_body.html' %}
+            </tbody>
+        </table>
 
 </div>
-{% else %}
-    <p>No videos in the queue, Upload your own!</p>
-{% endif %}
+
 
 
 

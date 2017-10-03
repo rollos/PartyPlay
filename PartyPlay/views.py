@@ -59,6 +59,11 @@ class RoomModelDetailView(generic.DetailView):
         top_songs = get_ordered_videos(self.object)
 
         context['queue'] = top_songs
+
+
+        if self.object.next_time and self.object.next_time < timezone.now():
+            update_currently_playing(self.object)
+
         context['current_video'] = self.object.current_video
 
 

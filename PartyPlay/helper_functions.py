@@ -40,8 +40,12 @@ def render_current_queue(request, room):
 
 
 def get_time_until_next(room):
+
     next_time = timezone.localtime(room.next_time)
     now = timezone.localtime(timezone.now())
+
+
+
     difference = next_time - now
 
     return int(difference.seconds) * 1000
