@@ -190,16 +190,19 @@ function send_end_video(){
                 $('.video_and_queue').html(data['html']);
 
 
-
+                $('#current-title').text("Now Playing: " + data['current_vid_name']);
                 $('#player').show();
 
                 player.loadVideoById(data['current_vid_id'], data['start_time'] );
+
 
                 window.clearInterval(queryTimer)
             }else{
                 $('.video_and_queue').html(data['html']);
 
                 $('#player').hide();
+
+                $('#current-title').text("There's nothing here! Add a video to get started");
 
                 window.clearInterval(queryTimer);
                 queryTimer = setInterval(send_end_video, 10000 );

@@ -144,8 +144,10 @@ def video_end(request, pk):
 
     if room.current_video:
         current_vid = room.current_video.videoID
+        current_vid_name = room.current_video.title
     else:
         current_vid = None
+        current_vid_name = None
 
 
     t_u_n = get_time_until_next(room)
@@ -164,6 +166,7 @@ def video_end(request, pk):
         'time_until_next': t_u_n,
         'current_vid_pk': new_pk,
         'current_vid_id': current_vid,
+        'current_vid_name': current_vid_name,
         'start_time': get_start_time(room)
     }
 

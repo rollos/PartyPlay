@@ -12,7 +12,7 @@
     <td>{{ video.voters.count }}</td>
     <td>
         {% if user.is_authenticated %}
-            <button type="button" id="btn-{{ video.pk }}" class="button-item" >
+            <button type="button" id="btn-{{ video.pk }}" class="button-item upvote-button" >
                 <span class="glyphicon glyphicon-arrow-up"></span>
             </button>
         {% else %}
