@@ -10,7 +10,7 @@
         var add_url = "{% url 'add-video' pk=room_data.pk %}";
         var end_video_url = "{% url 'end-video' pk=room_data.pk %}";
     </script>
-    <div class="col-sm-12" style="padding-bottom:10px">
+    <div class="col-sm-12" style="padding-bottom:10px; padding-top:10px;">
         <div class="title">
                 <h1 style="display:inline; vertical-align: bottom;">{{ room_data.name }}</h1>
                  <p style="display:inline; vertical-align: bottom;">Created By: {{ room_data.creator }}</p>
