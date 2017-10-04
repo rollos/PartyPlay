@@ -1,0 +1,13 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+    <h4 style="padding-top:20px;">Add a room for your friends or a public room for the whole world!</h4>
+    <div class="panel">
+
+        <form action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Add Room" />
+        </form>
+
+    </div>
+
+{% endblock %}

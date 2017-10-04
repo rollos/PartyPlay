@@ -9,96 +9,78 @@
         var player;
         var add_url = "{% url 'add-video' pk=room_data.pk %}";
         var end_video_url = "{% url 'end-video' pk=room_data.pk %}";
+        var favorite_url = "{% url 'favorite-room' pk=room_data.pk %}";
+        var get_queue_url = "{% url 'get-queue' pk=room_data.pk %}";
     </script>
-    <div class="col-sm-12" style="padding-bottom:10px; padding-top:10px;">
-        <div class="title">
-                <h1 style="display:inline; vertical-align: bottom;">{{ room_data.name }}</h1>
-                 <p style="display:inline; vertical-align: bottom;">Created By: {{ room_data.creator }}</p>
+    <div class="row">
+        <div class="col-sm-12" style="padding-bottom:10px; padding-top:10px;">
+            <div class="title">
+                    <h1 style="display:inline; vertical-align: bottom;">{{ room_data.name }}</h1>
+                     <p style="display:inline; vertical-align: bottom;">Created By: {{ room_data.creator }}</p>
+    {#                <div id="favorite">#}
+    {#                    <button class="btn btn-default button-favorite"> <span class="glyphicon glyphicon-star"></span></button>#}
+    {#                </div>#}
+            </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-8" style="position:relative;">
+            <div class="container-fluid" style="padding:0;">
+                <div class="search-and-results row">
+                    <div class="col-sm-12">
+                         <div id="buttons">
+                             <form class ="form-horizontal" id="searchform" role="form">
+                                 <div class="input-group">
+                                     <input id="query" class="form-control" type="search" placeholder="Search YouTube for a video to add..." size="30"/>
+                                     <script>
 
-    <div class="col-md-8" style="position:relative;">
-        <div class="container-fluid" style="padding:0;">
+                                         </script>
+                                     <span class="input-group-btn">
+                                        <button id="search-button"  type ='button' class="btn btn-search btn-default" onclick="keyWordsearch()">
+                                            <span class="glyphicon glyphicon-search"></span>
 
+                                         </button>
 
+                                     </span>
+                                 </div>
+                             </form>
 
+                        </div>
 
-            <div class="search-and-results">
+                            <div id="results" class="list-group rounded-bottom hidden" style="display: inline-block; position: absolute; z-index:1000; max-height:400px; overflow: auto; border-style: solid; border-width:1px; border-bottom-left-radius:25px; border-bottom-right-radius:25px"></div>
 
-                     <div id="buttons">
-                         <form class ="form-horizontal" id="searchform" role="form">
-                             <div class="input-group">
-                                 <input id="query" class="form-control" type="search" placeholder="Search YouTube for a video to add..." size="30"/>
-                                 <script>
-
-                                     </script>
-                                 <span class="input-group-btn">
-                                    <button id="search-button"  type ='button' class="btn btn-search btn-default" onclick="keyWordsearch()">
-                                        <span class="glyphicon glyphicon-search"></span>
-
-                                     </button>
-
-                                 </span>
-                             </div>
-                         </form>
-{#                        <label>#}
-{#                            <input id="query" type="text" placeholder="Search YouTube for a video to add..." size="30"/>#}
-{#                            <button id="search-button"  class="btn btn-search btn-default" onclick="keyWordsearch()" style="padding:0; line-height:1">#}
-{#                                <span class="glyphicon glyphicon-search"></span>#}
-{##}
-{#                            </button>#}
-{##}
-{#                        </label>#}
                     </div>
-    {#                <div id="container" >style="height: 200px; overflow: auto">#}
-        {#                <h1>Search Results</h1>#}
-{#                    <div id="results_div" class="border-top-5" style="display: inline-block;">#}
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="videodata" style="margin-top:5px; margin-left:0; padding-left:15px" >
+                            <div id="videoplayer">
+                                <div id="player" ></div>
+                            </div>
 
-                        <div id="results" class="list-group rounded-bottom hidden" style="display: inline-block; position: absolute; z-index:1000; max-height:400px; overflow: auto; border-style: solid; border-width:1px; border-bottom-left-radius:25px; border-bottom-right-radius:25px"></div>
+                            <h3 id="current-title"></h3>
+                            <p id="current-uploader"></p>
+                    </div>
+                </div>
 
-
-{#                    </div>#}
-
-
-
-{#                </div>#}
-
-            </div>
-
-            <div class="col-md-12" style="position:fixed; margin-top:5px; margin-left:0; padding-left:0" >
-
-                    <div id="player" ></div>
-                    <h3 id="current-title"></h3>
-                    <p id="current-uploader"></p>
-            </div>
+            <br>
 
 
+            {% if not current_video %}
+                <script>$('#player').hide();</script>
+            {% endif %}
 
 
-
-
-
-
-
-        <br>
-
-
-        {% if not current_video %}
-            <script>$('#player').hide();</script>
-        {% endif %}
-
-
-            </div>
-    </div>
-
-    <div class="col-md-4">
-        <div class="video_and_queue">
-            {% include 'partyplay/video_and_queue.html' %}
+                </div>
         </div>
-        <div class="message"></div>
 
-    </div>
+        <div class="col-sm-4">
+            <div class="video_and_queue">
+                {% include 'partyplay/video_and_queue.html' %}
+            </div>
+            <div class="message"></div>
 
+        </div>
+</div>
 
 
 

@@ -19,7 +19,7 @@ from django.utils import timezone
 from django.template import RequestContext
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic.edit import FormMixin
+from django.views.generic.edit import FormMixin, CreateView
 
 from PartyPlay.forms import UploadVideoForm
 from PartyPlay.models import Room, Video
@@ -37,6 +37,19 @@ class RoomModelListView(generic.ListView):
     model = Room
     context_object_name = 'room_list'
     template_name = 'partyplay/roommodel_list.html'
+
+
+    def get_context_data(self, **kwargs):
+        context = super(RoomModelListView, self).get_context_data(**kwargs)
+        favorite_room_list = []
+
+        for room in context['room_list'].all():
+            if self.request.user in room.favorite_users.all():
+                favorite_room_list.append(room)
+
+
+        context['favorite_room_list'] = favorite_room_list
+        return context
 
 
 class RoomModelDetailView(generic.DetailView):
@@ -107,6 +120,24 @@ def add_video(request, pk):
 
 
     return render_current_queue(request, video.room)
+
+
+@login_required
+@require_http_methods(["POST"])
+def favorite_room(request, pk):
+    room = Room.objects.get(pk=pk)
+
+    if request.user in room.favorite_users.all():
+        room.favorite_users.remove(request.user)
+    else:
+        room.favorite_users.add(request.user)
+
+    return HttpResponse()
+
+
+def get_queue(request, pk):
+    room = Room.objects.get(pk=pk)
+    return render_current_queue(request, room)
 
 
 @require_http_methods(["POST"])
@@ -219,6 +250,9 @@ def upvote(request):
 
 
 
+
+
+
 class UserProfilePage(LoginRequiredMixin, generic.ListView):
     model = Video
     template_name = 'partyplay/userprofile.html'
@@ -228,7 +262,22 @@ class UserProfilePage(LoginRequiredMixin, generic.ListView):
 
         context = super(UserProfilePage, self).get_context_data(**kwargs)
 
-        context['uploaded_videos'] = Video.objects.filter(uploader=self.request.user).order_by('-rank')
+        context['uploaded_videos'] = Video.objects.filter(uploader=self.request.user)
         context['created_rooms'] = Room.objects.filter(creator=self.request.user).all()
 
         return context
+
+
+class RoomCreate(CreateView):
+    model = Room
+    fields = ['name', 'public']
+    template_name = 'partyplay/addroom.html'
+
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        form.instance.url = form.cleaned_data['name'].lower().replace(" ","")
+        form.save()
+        return super(RoomCreate, self).form_valid(form)
+
+
+

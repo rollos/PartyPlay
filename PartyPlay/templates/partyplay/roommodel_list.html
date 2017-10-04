@@ -1,11 +1,36 @@
 {% extends 'base_generic.html' %}
 {% block content %}
 <h1>PartyPlay Rooms</h1>
-<ul>
-{% for room in room_list %}
-    <li>
-        <a href="{%  url 'room-detail-view' room.pk %}">{{ room.name }}</a>
-    </li>
-{% endfor %}
-</ul>
+
+    <div class="col-sm-5">
+        <h3>All rooms</h3>
+        <div class="list-group">
+          <ul>
+            {% for room in room_list %}
+
+                    <a href="{%  url 'room-detail-view' room.pk %}" class="list-group-item list-group-item-action"><h4>{{ room.name }}</h4> Creator: {{ room.creator.username }}   -  Videos uploaded: {{ room.video_set.count }}</a>
+
+            {% endfor %}
+          </ul>
+
+        </div>
+    </div>
+    <div class="col-sm-5">
+        <h3>My Favorite Rooms</h3>
+        <div class="list-group">
+          <ul>
+            {% for room in favorite_room_list %}
+
+                    <a href="{%  url 'room-detail-view' room.pk %}" class="list-group-item list-group-item-action"><h4>{{ room.name }}</h4> Creator:{{ room.creator.username }} - Videos uploaded: {{ room.video_set.count }}</a>
+
+            {% endfor %}
+          </ul>
+
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <a href="{% url 'add-room' %}" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Create Room</a>
+    </div>
+
+
 {% endblock %}

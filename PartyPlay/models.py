@@ -18,6 +18,7 @@ class Room(models.Model):
     current_video = models.ForeignKey('Video', null=True, blank=True,  on_delete=models.SET_NULL, related_name='currently_playing')
     next_time = models.DateTimeField(null=True, blank=True)
 
+    favorite_users = models.ManyToManyField(User, blank=True, related_name='favorite_users')
 
 
     def get_absolute_url(self):
@@ -47,8 +48,11 @@ class Video(models.Model):
     voters = models.ManyToManyField(User, related_name='vote_users', blank=True)
 
 
+
     def __str__(self):
         return str(self.videoID)
 
     def get_votes(self):
         return self.voters.all().count()
+
+

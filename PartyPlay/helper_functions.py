@@ -38,7 +38,16 @@ def update_currently_playing(room):
 
 
 def render_current_queue(request, room):
-    return HttpResponse(render_to_string('partyplay/queue_body.html', context={'queue': get_ordered_videos(room)}, request=request))
+    videos = get_ordered_videos(room)
+    upvotes = []
+
+    for video in videos:
+
+        if request.user in video.voters.all():
+            upvotes.append(video.pk)
+
+
+    return HttpResponse(render_to_string('partyplay/queue_body.html', context={'queue': get_ordered_videos(room), 'upvotes':upvotes}, request=request))
 
 
 def get_time_until_next(room):
