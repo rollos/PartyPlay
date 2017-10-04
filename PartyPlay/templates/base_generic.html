@@ -3,48 +3,69 @@
 <head>
 
   {% block title %}<title>PartyPlay</title>{% endblock %}
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    {% block head-meta %}
+  	<meta charset="utf-8">
+  	<!--Add keywords that describe your project between the quotation marks. This helps search engines find and index your content-->
+    <meta name="keywords" content="REPLACE WITH YOUR OWN KEYWORDS HERE, AND HERE, AND HERE">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock %}
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css">
+{#    <link rel="stylesheet" href="https://npmcdn.com/react-bootstrap-table/dist/react-bootstrap-table.min.css">#}
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
 
   <!-- Add additional CSS in static file -->
   {% load static %}
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link href="{% static 'css/sidebar.css'%}" rel="stylesheet">
 </head>
-
 
 
 <body>
 
-  <div class="container-fluid">
+<div class="container-fluid" id="wrapper">
 
     <div class="row">
       <div class="col-sm-2">
       {% block sidebar %}
-      <ul class="sidebar-nav">
-          <li><a href="{% url 'rooms' %}">Home</a></li>
 
-          <li></li>
-      {% if user.is_authenticated %}
-        <li>User: {{ user.get_username }}</li>
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li><a href="{% url 'rooms' %}"><h3 id="sidebar-title">PartyPlay</h3></a></li>
 
-        <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
-        <li><a href="{% url 'user-profile' %}">Profile</a></li>
-      {% else %}
-         <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
-      {% endif %}
-      </ul>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'user-profile' %}">{{ user.get_username }}</a></li>
+
+                    <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+                    <li><a href="{% url 'user-profile' %}">Profile</a></li>
+                  {% else %}
+                     <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+                {% endif %}
+
+
+            </ul>
+        </div>
      {% endblock %}
       </div>
       <div class="col-sm-10 ">
       {% block content %}{% endblock %}
       </div>
     </div>
-
-  </div>
+</div>
 
 
 </body>
+
+
+
+
+
+
+
+
 </html>

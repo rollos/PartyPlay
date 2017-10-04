@@ -4,21 +4,16 @@
 
 
 
-    <div id='video_list'>
-        <h4>Queue:</h4>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Uploader</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
+    <div id='video_list' >
+        <h3 style="margin-top:0; padding-left:8px">Up Next</h3>
+        <div style="height:350px; overflow-x: hidden; overflow-y: auto;" >
+        <table class="table table-striped"  >
+
             <tbody class="table_body">
                 {% include 'partyplay/queue_body.html' %}
             </tbody>
         </table>
+        </div>
 
 </div>
 

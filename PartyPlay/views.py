@@ -116,6 +116,11 @@ def video_end(request, pk):
     #Finished video pk
     str_val = request.POST.get("vid_pk")
 
+    if request.user:
+        user = request.user
+    else:
+        user = None
+
 
     #If there is no video on frontend
     if (str_val == '' or str_val == None):
@@ -156,7 +161,8 @@ def video_end(request, pk):
         'current_video': room.current_video,
 
         'time_until_next': get_time_until_next(room),
-        'queue': get_ordered_videos(room)
+        'queue': get_ordered_videos(room),
+        'user': request.
     }
 
 

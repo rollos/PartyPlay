@@ -6,3 +6,12 @@
     border: 0;
     background: transparent;
 }
+
+body {
+    padding-left: 0;
+    margin-left: 0;
+    border:0
+}
+
+
+
