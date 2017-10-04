@@ -116,10 +116,7 @@ def video_end(request, pk):
     #Finished video pk
     str_val = request.POST.get("vid_pk")
 
-    if request.user:
-        user = request.user
-    else:
-        user = None
+
 
 
     #If there is no video on frontend
@@ -157,12 +154,22 @@ def video_end(request, pk):
 
     t_u_n = get_time_until_next(room)
 
+    videos = get_ordered_videos(room)
+    upvotes = []
+
+
+    for video in videos:
+        if request.user in video.voters.all():
+            upvotes.append(video.pk)
+
+
     context = {
         'current_video': room.current_video,
 
         'time_until_next': get_time_until_next(room),
         'queue': get_ordered_videos(room),
-        'user': request.
+        'upvotes': upvotes
+
     }
 
 

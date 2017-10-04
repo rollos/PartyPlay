@@ -6,7 +6,9 @@ from django.utils import timezone
 from django.shortcuts import render
 
 
-def get_ordered_videos(room):
+def get_ordered_videos(room, user=None):
+
+
     return room.video_set.filter(played=False).annotate(votes_count=Count('voters')).order_by('-votes_count')
 
 
