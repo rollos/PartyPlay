@@ -147,9 +147,11 @@ def video_end(request, pk):
     if room.current_video:
         current_vid = room.current_video.videoID
         current_vid_name = room.current_video.title
+        uploader = room.current_video.uploader.username
     else:
         current_vid = None
         current_vid_name = None
+        uploader = None
 
 
     t_u_n = get_time_until_next(room)
@@ -180,6 +182,7 @@ def video_end(request, pk):
         'current_vid_pk': new_pk,
         'current_vid_id': current_vid,
         'current_vid_name': current_vid_name,
+        'current_uploader': uploader,
         'start_time': get_start_time(room)
     }
 

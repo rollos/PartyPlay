@@ -1,4 +1,4 @@
-
+{% if queue %}
 {% for video in queue %}
 
     <tr>
@@ -34,3 +34,6 @@
     </tr>
 
 {% endfor %}
+    {% else %}
+    <tr ><td style="margin-left:8px;">There's nothing in the Queue!</td></tr>
+{% endif %}

@@ -191,6 +191,7 @@ function send_end_video(){
 
 
                 $('#current-title').text("Now Playing: " + data['current_vid_name']);
+                $('#current-uploader').text("Uploaded by: " + data['current_uploader']);
                 $('#player').show();
 
                 player.loadVideoById(data['current_vid_id'], data['start_time'] );
@@ -202,7 +203,8 @@ function send_end_video(){
 
                 $('#player').hide();
 
-                $('#current-title').text("There's nothing here! Add a video to get started");
+                $('#current-title').text("There's nothing here! Add a video to get started.");
+                $('#current-uploader').text("");
 
                 window.clearInterval(queryTimer);
                 queryTimer = setInterval(send_end_video, 10000 );
