@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 
 class Room(models.Model):
     name = models.CharField(max_length=200)
-    url = models.CharField(max_length=200, default=str(name), primary_key=True)
+    url = models.CharField(max_length=200, default='', primary_key=True)
     public = models.BooleanField(default=True)
     creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
