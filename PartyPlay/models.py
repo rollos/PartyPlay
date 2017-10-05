@@ -50,7 +50,7 @@ class Video(models.Model):
     pass
 
     def __str__(self):
-        return str(self.videoID)
+        return str(self.title)
 
     def get_votes(self):
         return self.voters.all().count()

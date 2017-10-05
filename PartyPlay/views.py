@@ -116,6 +116,9 @@ def add_video(request, pk):
     video.duration = timedelta(seconds=int(duration))
     video.room = room
     video.videoID = vid_id
+
+    video.save()
+    video.voters.add(request.user)
     video.save()
 
 
