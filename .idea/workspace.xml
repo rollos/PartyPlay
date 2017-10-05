@@ -1,33 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="df971033-4ea3-4c3d-90d4-d0a0df7e3329" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0002_auto_20170913_2027.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0003_auto_20170915_0120.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0004_remove_video_rank.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0005_video_video_length.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0006_auto_20170915_1955.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0007_auto_20170921_2120.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0008_auto_20170921_2121.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0009_auto_20170921_2122.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0010_profile.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0011_auto_20170921_1807.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0012_auto_20170924_1809.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0013_auto_20170924_1811.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0014_auto_20170924_1812.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0015_auto_20170925_1628.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0016_video_videoid.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0017_auto_20170926_1348.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0018_video_title.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0019_profile.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0020_auto_20171003_2215.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0021_room_favorite_users.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0022_auto_20171004_1900.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0023_auto_20171004_1926.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0024_remove_video_room.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="" />
+    <list default="true" id="df971033-4ea3-4c3d-90d4-d0a0df7e3329" name="Default" comment="Re Added Video Room">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/PartyPlay/migrations/0001_initial.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,12 +34,12 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PartyPlay/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="21" column="8" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+            <state relative-caret-position="495">
+              <caret line="40" column="4" lean-forward="false" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
               <folding>
-                <marker date="1507166904000" expanded="true" signature="266:788" ph="..." />
-                <marker date="1507166904000" expanded="true" signature="266:789" ph="..." />
-                <marker date="1507166904000" expanded="true" signature="1502:1579" ph="..." />
+                <marker date="1507167508000" expanded="true" signature="266:788" ph="..." />
+                <marker date="1507167508000" expanded="true" signature="266:789" ph="..." />
+                <marker date="1507167508000" expanded="true" signature="1500:1577" ph="..." />
               </folding>
             </state>
           </provider>
@@ -789,7 +765,21 @@
       <option name="project" value="LOCAL" />
       <updated>1507166975941</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Deleted all migrations&#10;">
+      <created>1507167201917</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1507167201918</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Deleted all migrations&#10;">
+      <created>1507167517329</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1507167517329</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TodoView">
@@ -852,7 +842,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="submitting votes, updating vote count and page reording without refreshing" />
     <MESSAGE value="uploading videos works asynchronously" />
     <MESSAGE value="very simple request setup for advancing the queue an getting the next video, no edge cases covered" />
     <MESSAGE value="queue being empty and emptying handled" />
@@ -877,7 +866,8 @@
     <MESSAGE value="set delete to null" />
     <MESSAGE value="Removed room fk from video&#10;" />
     <MESSAGE value="Added the previous migrations&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the previous migrations&#10;" />
+    <MESSAGE value="Deleted all migrations&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted all migrations&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1280,12 +1270,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PartyPlay/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="21" column="8" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+        <state relative-caret-position="495">
+          <caret line="40" column="4" lean-forward="false" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
           <folding>
-            <marker date="1507166904000" expanded="true" signature="266:788" ph="..." />
-            <marker date="1507166904000" expanded="true" signature="266:789" ph="..." />
-            <marker date="1507166904000" expanded="true" signature="1502:1579" ph="..." />
+            <marker date="1507167508000" expanded="true" signature="266:788" ph="..." />
+            <marker date="1507167508000" expanded="true" signature="266:789" ph="..." />
+            <marker date="1507167508000" expanded="true" signature="1500:1577" ph="..." />
           </folding>
         </state>
       </provider>
