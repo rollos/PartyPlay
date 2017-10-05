@@ -2,9 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df971033-4ea3-4c3d-90d4-d0a0df7e3329" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0002_auto_20170913_2027.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0003_auto_20170915_0120.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0004_remove_video_rank.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0005_video_video_length.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0006_auto_20170915_1955.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0007_auto_20170921_2120.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0008_auto_20170921_2121.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0009_auto_20170921_2122.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0010_profile.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0011_auto_20170921_1807.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0012_auto_20170924_1809.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0013_auto_20170924_1811.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0014_auto_20170924_1812.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0015_auto_20170925_1628.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0016_video_videoid.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0017_auto_20170926_1348.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0018_video_title.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0019_profile.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0020_auto_20171003_2215.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0021_room_favorite_users.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0022_auto_20171004_1900.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0023_auto_20171004_1926.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0024_remove_video_room.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PartyPlay/models.py" afterPath="$PROJECT_DIR$/PartyPlay/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PartyPlay/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/PartyPlay/migrations/0001_initial.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,63 +58,13 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PartyPlay/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="44" column="4" lean-forward="false" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="4" />
+            <state relative-caret-position="210">
+              <caret line="21" column="8" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
               <folding>
                 <marker date="1507166904000" expanded="true" signature="266:788" ph="..." />
                 <marker date="1507166904000" expanded="true" signature="266:789" ph="..." />
                 <marker date="1507166904000" expanded="true" signature="1502:1579" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="0022_auto_20171004_1900.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PartyPlay/migrations/0022_auto_20171004_1900.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="0021_room_favorite_users.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PartyPlay/migrations/0021_room_favorite_users.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="0020_auto_20171003_2215.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PartyPlay/migrations/0020_auto_20171003_2215.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="0019_profile.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PartyPlay/migrations/0019_profile.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="0018_video_title.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PartyPlay/migrations/0018_video_title.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -802,7 +775,21 @@
       <option name="project" value="LOCAL" />
       <updated>1507166665227</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Removed room fk from video&#10;">
+      <created>1507166935286</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1507166935286</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Added the previous migrations&#10;">
+      <created>1507166975941</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1507166975941</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TodoView">
@@ -865,8 +852,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Got upvoting and downvoting working properly" />
-    <MESSAGE value="Removed Rank" />
     <MESSAGE value="submitting votes, updating vote count and page reording without refreshing" />
     <MESSAGE value="uploading videos works asynchronously" />
     <MESSAGE value="very simple request setup for advancing the queue an getting the next video, no edge cases covered" />
@@ -890,7 +875,9 @@
     <MESSAGE value="Queue refreshes every 10 seconds&#10;" />
     <MESSAGE value="Changed on_delete for foreign keys in models to CASCADE" />
     <MESSAGE value="set delete to null" />
-    <option name="LAST_COMMIT_MESSAGE" value="set delete to null" />
+    <MESSAGE value="Removed room fk from video&#10;" />
+    <MESSAGE value="Added the previous migrations&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the previous migrations&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1293,8 +1280,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PartyPlay/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="44" column="4" lean-forward="false" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="4" />
+        <state relative-caret-position="210">
+          <caret line="21" column="8" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
           <folding>
             <marker date="1507166904000" expanded="true" signature="266:788" ph="..." />
             <marker date="1507166904000" expanded="true" signature="266:789" ph="..." />
