@@ -24,7 +24,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',  'fs@1p4yohredtde_gx3_n!dp!68!r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = ['https://wm-partyplay.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['wm-partyplay.herokuapp.com','127.0.0.1']
 
 
 # Application definition
