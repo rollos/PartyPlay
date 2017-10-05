@@ -22,9 +22,10 @@ from PartyPlay import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^partyplay/', include('PartyPlay.urls')),
+    url(r'^partyplay/', include('PartyPlay.urls'), name='partyplay'),
     url(r'^accounts/', include('django.contrib.auth.urls')),        # Add Auth URL's
     url(r'^profile/$', views.UserProfilePage.as_view(), name='user-profile'),
+    url(r'^signup/$', views.signup, name='signup'),
 
 ]
 urlpatterns += staticfiles_urlpatterns()

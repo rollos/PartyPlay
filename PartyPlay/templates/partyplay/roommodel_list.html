@@ -1,6 +1,6 @@
 {% extends 'base_generic.html' %}
 {% block content %}
-<h1>PartyPlay Rooms</h1>
+<h1>Rooms</h1>
 
     <div class="col-sm-5">
         <h3>All rooms</h3>
@@ -15,6 +15,7 @@
 
         </div>
     </div>
+    {% if user.is_authenticated %}
     <div class="col-sm-5">
         <h3>My Favorite Rooms</h3>
         <div class="list-group">
@@ -31,6 +32,6 @@
     <div class="col-sm-2">
         <a href="{% url 'add-room' %}" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Create Room</a>
     </div>
-
+    {% endif %}
 
 {% endblock %}
