@@ -191,17 +191,6 @@ function refresh_queue(){
 
     $('.table_body').html('').load(get_queue_url
         );
-    // $.ajax({
-    //     url : get_queue_url,
-    //     type : "GET",
-    //     dataType: 'json',
-    //
-    //     success: function(data) {
-    //
-    //         $('.video_and_queue').html(data['html']);
-    //     }
-    //
-    // })
 }
 
 function send_end_video(){
