@@ -35,7 +35,7 @@
                 <a href="{% url 'rooms' %}"><h3 id="sidebar-title">PartyPlay</h3></a>
 
                 {% if user.is_authenticated %}
-                    <a href="{% url 'user-profile' %}">{{ user.get_username }}</a><
+                    <a href="{% url 'user-profile' %}" style="color: #ffffff;">{{ user.get_username }}</a> -
 
                     <a href="{% url 'logout'%}?next={{request.path}}">Logout</a>
                   {% else %}
