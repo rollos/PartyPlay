@@ -220,7 +220,10 @@ function send_end_video(){
                 player.loadVideoById(data['current_vid_id'], data['start_time'] );
 
 
-                window.clearInterval(queryTimer)
+
+                window.clearInterval(queryTimer);
+
+
             }else{
                 $('.video_and_queue').html(data['html']);
 
@@ -244,6 +247,10 @@ function send_end_video(){
 
 
     })
+}
+
+function isBreakpoint( alias ) {
+    return $('.device-' + alias).is(':visible');
 }
 
 function convert_yt_time(duration) {

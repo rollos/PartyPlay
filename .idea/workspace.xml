@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df971033-4ea3-4c3d-90d4-d0a0df7e3329" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/registration/signup.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PartyPlay/forms.py" afterPath="$PROJECT_DIR$/PartyPlay/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PartyPlay/templates/partyplay/roommodel_list.html" afterPath="$PROJECT_DIR$/PartyPlay/templates/partyplay/roommodel_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PartyPlay/views.py" afterPath="$PROJECT_DIR$/PartyPlay/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PartySite3/urls.py" afterPath="$PROJECT_DIR$/PartySite3/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/registration/login.html" afterPath="$PROJECT_DIR$/templates/registration/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PartyPlay/static/scripts/main.js" afterPath="$PROJECT_DIR$/PartyPlay/static/scripts/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PartyPlay/templates/base_generic.html" afterPath="$PROJECT_DIR$/PartyPlay/templates/base_generic.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PartySite3/settings.py" afterPath="$PROJECT_DIR$/PartySite3/settings.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,14 +34,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base_generic.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base_generic.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PartyPlay/templates/base_generic.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="28" column="6" lean-forward="false" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+            <state relative-caret-position="420">
+              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding>
                 <element signature="n#block#1;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -53,11 +50,21 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PartyPlay/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
+            <state relative-caret-position="238">
               <caret line="154" column="34" lean-forward="false" selection-start-line="154" selection-start-column="34" selection-end-line="154" selection-end-column="34" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PartySite3/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="26" column="78" lean-forward="false" selection-start-line="26" selection-start-column="78" selection-end-line="26" selection-end-column="78" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -82,25 +89,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="helper_functions.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PartyPlay/helper_functions.py">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PartyPlay/static/scripts/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-135">
-              <caret line="11" column="124" lean-forward="false" selection-start-line="11" selection-start-column="124" selection-end-line="11" selection-end-column="124" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PartyPlay/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="51" column="22" lean-forward="true" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
+            <state relative-caret-position="253">
+              <caret line="224" column="0" lean-forward="false" selection-start-line="224" selection-start-column="0" selection-end-line="224" selection-end-column="0" />
               <folding>
-                <marker date="1507173367000" expanded="true" signature="266:788" ph="..." />
-                <marker date="1507173367000" expanded="true" signature="266:789" ph="..." />
-                <marker date="1507173367000" expanded="true" signature="1500:1577" ph="..." />
+                <element signature="n#!!block;n#convert_yt_time#0" expanded="false" />
+                <marker date="1507179496000" expanded="true" signature="1868:1875" ph="×" />
+                <marker date="1507179496000" expanded="true" signature="3454:3477" ph="..." />
+                <marker date="1507179496000" expanded="true" signature="6758:6765" ph="×" />
               </folding>
             </state>
           </provider>
@@ -129,10 +127,10 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PartySite3/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="24" column="66" lean-forward="false" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="66" />
+            <state relative-caret-position="390">
+              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding>
-                <marker date="1507177866000" expanded="true" signature="644:718" ph="import ..." />
+                <marker date="1507178896000" expanded="true" signature="644:718" ph="import ..." />
               </folding>
             </state>
           </provider>
@@ -198,14 +196,12 @@
         <option value="$PROJECT_DIR$/PartyPlay/templates/partyplay/userprofile.html" />
         <option value="$PROJECT_DIR$/PartyPlay/templates/partyplay/queue_body.html" />
         <option value="$PROJECT_DIR$/PartyPlay/urls.py" />
-        <option value="$PROJECT_DIR$/PartyPlay/static/scripts/main.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/runtime" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/PartyPlay/migrations/0022_auto_20171004_1835.py" />
         <option value="$PROJECT_DIR$/PartyPlay/migrations/0026_auto_20171004_1842.py" />
-        <option value="$PROJECT_DIR$/PartySite3/settings.py" />
         <option value="$PROJECT_DIR$/PartyPlay/static/css/styles.css" />
         <option value="$PROJECT_DIR$/PartyPlay/templates/partyplay/roommodel_detail.html" />
         <option value="$PROJECT_DIR$/PartyPlay/helper_functions.py" />
@@ -213,10 +209,12 @@
         <option value="$PROJECT_DIR$/PartyPlay/forms.py" />
         <option value="$PROJECT_DIR$/templates/registration/signup.html" />
         <option value="$PROJECT_DIR$/templates/registration/login.html" />
-        <option value="$PROJECT_DIR$/PartySite3/urls.py" />
         <option value="$PROJECT_DIR$/PartyPlay/views.py" />
         <option value="$PROJECT_DIR$/PartyPlay/templates/partyplay/roommodel_list.html" />
+        <option value="$PROJECT_DIR$/PartySite3/urls.py" />
         <option value="$PROJECT_DIR$/PartyPlay/templates/base_generic.html" />
+        <option value="$PROJECT_DIR$/PartyPlay/static/scripts/main.js" />
+        <option value="$PROJECT_DIR$/PartySite3/settings.py" />
       </list>
     </option>
   </component>
@@ -322,29 +320,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PartySite3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PartySite3" />
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="PartyPlay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partyplay" />
+              <option name="myItemId" value="scripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -363,28 +343,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PartySite3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PartySite3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PartyPlay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -981,7 +939,21 @@
       <option name="project" value="LOCAL" />
       <updated>1507173423375</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Added account creation">
+      <created>1507178460773</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1507178460773</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Removed PartyPlay from URL">
+      <created>1507178941621</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1507178941621</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1044,8 +1016,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Queue is hidden when the queue is empty" />
-    <MESSAGE value="Javascript vote buttons are working after queue is refreshed" />
     <MESSAGE value="Basic frontend search added" />
     <MESSAGE value="Adding video to queue works, finds duration and sets it, removed url and name, all videos will be stored by their youtube id" />
     <MESSAGE value="All basic functionality except for Video display" />
@@ -1069,7 +1039,9 @@
     <MESSAGE value="Fixed some mobile layout problems" />
     <MESSAGE value="Removed video on mobile&#10;" />
     <MESSAGE value="Double sort, user automatically votes on videos they upload" />
-    <option name="LAST_COMMIT_MESSAGE" value="Double sort, user automatically votes on videos they upload" />
+    <MESSAGE value="Added account creation" />
+    <MESSAGE value="Removed PartyPlay from URL" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed PartyPlay from URL" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1169,6 +1141,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
           <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1232,19 +1205,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PartyPlay/static/scripts/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="30" column="7" lean-forward="false" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
-          <folding>
-            <element signature="n#!!block;n#convert_yt_time#0" expanded="false" />
-            <marker date="1507156391000" expanded="true" signature="1868:1875" ph="×" />
-            <marker date="1507156391000" expanded="true" signature="3454:3477" ph="..." />
-            <marker date="1507156391000" expanded="true" signature="6754:6761" ph="×" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1313,14 +1273,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PartySite3/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="38" column="16" lean-forward="false" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PartyPlay/helper_functions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-135">
@@ -1338,24 +1290,6 @@
             <marker date="1507173367000" expanded="true" signature="266:789" ph="..." />
             <marker date="1507173367000" expanded="true" signature="1500:1577" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PartySite3/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="24" column="66" lean-forward="false" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="66" />
-          <folding>
-            <marker date="1507177866000" expanded="true" signature="644:718" ph="import ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PartyPlay/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" column="67" lean-forward="false" selection-start-line="8" selection-start-column="67" selection-end-line="8" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1383,6 +1317,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PartyPlay/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" column="67" lean-forward="false" selection-start-line="8" selection-start-column="67" selection-end-line="8" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PartySite3/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding>
+            <marker date="1507178896000" expanded="true" signature="644:718" ph="import ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/registration/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="274">
@@ -1391,9 +1343,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PartyPlay/static/scripts/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="224" column="0" lean-forward="false" selection-start-line="224" selection-start-column="0" selection-end-line="224" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#convert_yt_time#0" expanded="false" />
+            <marker date="1507179496000" expanded="true" signature="1868:1875" ph="×" />
+            <marker date="1507179496000" expanded="true" signature="3454:3477" ph="..." />
+            <marker date="1507179496000" expanded="true" signature="6758:6765" ph="×" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PartyPlay/templates/base_generic.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <element signature="n#block#1;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PartyPlay/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
+        <state relative-caret-position="238">
           <caret line="154" column="34" lean-forward="false" selection-start-line="154" selection-start-column="34" selection-end-line="154" selection-end-column="34" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
@@ -1401,14 +1377,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PartyPlay/templates/base_generic.html">
+    <entry file="file://$PROJECT_DIR$/PartySite3/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="28" column="6" lean-forward="false" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
-          <folding>
-            <element signature="n#block#1;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="195">
+          <caret line="26" column="78" lean-forward="false" selection-start-line="26" selection-start-column="78" selection-end-line="26" selection-end-column="78" />
+          <folding />
         </state>
       </provider>
     </entry>
