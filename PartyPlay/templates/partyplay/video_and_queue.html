@@ -26,7 +26,7 @@
         var $this = $(this);
         var v_id =  $this.attr('id').substring($this.attr('id').indexOf('-')+1);
 
-        $('.table_body').html('').load("/partyplay/vote/?vid_pk=" + v_id
+        $('.table_body').html('').load("/vote/?vid_pk=" + v_id
         );
     });
 </script>
